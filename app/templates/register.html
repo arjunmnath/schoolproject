@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Registration Step 2</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/checkout/" />
+
+    <link href="/static/assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        .mb-3 {
+            margin-top: .2rem;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .b-example-divider {
+            height: 3rem;
+            background-color: rgba(0, 0, 0, 0.1);
+            border: solid rgba(0, 0, 0, 0.15);
+            border-width: 1px 0;
+            box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
+                inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
+        }
+
+        .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+        }
+
+        .bi {
+            vertical-align: -0.125em;
+            fill: currentColor;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .container {
+            max-width: 960px;
+        }
+
+        #cen-div {
+            display: flex;
+            justify-content: center;
+
+        }
+    </style>
+    <link href="/static/form-validation.css" rel="stylesheet" />
+</head>
+
+<body class="bg-light">
+    <div class="container">
+        <main>
+            <div class="py-5 text-center">
+                <img class="d-block mx-auto mb-4" src="/static/icons/avatar-male.svg"
+                    alt="/static/icons/avatar-female.svg" width="25%" height="25%" />
+                <h2>Registration Form</h2>
+                <p class="lead"></p>
+            </div>
+            <div class="container">
+
+                <div class="row g-5" id="cen-div">
+                    <div class="col-md-7 col-lg-8">
+                        <h4 class="mb-3">Student Details</h4>
+                        <form class="needs-validation" action="{{url_for('finalregister')}}" method="post">
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <label for="fname" class="form-label">First name</label>
+                                    <input type="text" class="form-control" id="fname" name="fname" required />
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <label for="lname" class="form-label">Last name</label>
+                                    <input type="text" class="form-control" id="lname" name="lname" required />
+                                </div>
+                                <div class="col-12">
+                                    <label for="fathername" class="form-label">Father's Name/Mother's Name</label>
+                                    <div class="input-group has-validation">
+                                        <input type="text" class="form-control" name="fathername"
+                                            value="{{fathername}}" required />
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="email" class="form-label">Email <span
+                                            class="text-muted">(required)</span></label>
+                                    <input type="email" class="form-control" name="email" value="{{ email }}"
+                                        required />
+                                </div>
+                                <div class="col-12">
+                                    <label for="phno" class="form-label">Mobile No. <span
+                                            class="text-muted">(required)</span></label>
+                                    <input type="tel" class="form-control" pattern="[0-9]{10}" name="phno" required />
+                                </div>
+                                <div class="col-12">
+                                    <label for="adhr" class="form-label">Addhaar No. <span
+                                            class="text-muted">(required)</span></label>
+                                    <input type="tel" class="form-control" pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}"
+                                        placeholder="xxxx-xxxx-xxxx" name="adhr" required />
+                                </div>
+                                <div class="col-md-7">
+                                    <label for="gender" class="form-label">Gender <span
+                                            class="text-muted">(required)</span></label>
+                                    <div class="input-group mb-3">
+                                        <select name="gender" id="gender" class="form-select" required>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="dob" class="form-label">Date of Birth<span
+                                            class="text-muted">(Required)</span></label>
+                                    <input type="date" class="form-control" name="dob" required />
+                                </div>
+
+                                <div class="col-md-7">
+                                    <label for="class" class="form-label">Class<span
+                                            class="text-muted">(Required)</span></label>
+                                    <select class="form-select" name="class" required>
+                                        <option value="VIII">VIII</option>
+                                        <option value="IX">IX</option>
+                                        <option value="X">X</option>
+                                        <option value="XI">XI</option>
+                                        <option value="XII">XII</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="hname" class="form-label">House Name<span
+                                            class="text-muted">(Required)</span></label>
+                                    <input type="text" class="form-control" name="hname" value="" required />
+                                </div>
+                                <div class="col-12">
+                                    <label for="haddr" class="form-label">Address<span
+                                            class="text-muted">(Required)</span></label>
+                                    <input type="text" class="form-control" name="haddr" value="" required />
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <label for="hcity" class="form-label">City<span
+                                            class="text-muted">(Required)</span></label>
+                                    <input type="text" class="form-control" name="hcity" value="" required />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="hdist" class="form-label">District<span
+                                            class="text-muted">(Required)</span></label>
+                                    <input type="text" class="form-control" name="hdist" value="" required />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="hstate" class="form-label">State<span
+                                            class="text-muted">(Required)</span></label>
+                                    <select class="form-select" name="hstate" required>
+                                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                        <option value="Assam">Assam</option>
+                                        <option value="Bihar">Bihar</option>
+                                        <option value="Chhattisgarh">Chhattisgarh</option>
+                                        <option value="Goa">Goa</option>
+                                        <option value="Gujarat">Gujarat</option>
+                                        <option value="Haryana">Haryana</option>
+                                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                        <option value="Jharkhand">Jharkhand</option>
+                                        <option value="Karnataka">Karnataka</option>
+                                        <option value="Kerala">Kerala</option>
+                                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                        <option value="Maharashtra">Maharashtra</option>
+                                        <option value="Manipur">Manipur</option>
+                                        <option value="Meghalaya">Meghalaya</option>
+                                        <option value="Mizoram">Mizoram</option>
+                                        <option value="Nagaland">Nagaland</option>
+                                        <option value="Odisha">Odisha</option>
+                                        <option value="Punjab">Punjab</option>
+                                        <option value="Rajasthan">Rajasthan</option>
+                                        <option value="Sikkim">Sikkim</option>
+                                        <option value="Tamil Nadu">Tamil Nadu</option>
+                                        <option value="Telangana">Telangana</option>
+                                        <option value="Tripura">Tripura</option>
+                                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                        <option value="Uttarakhand">Uttarakhand</option>
+                                        <option value="West Bengal">West Bengal</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="hpin" class="form-label">Pincode<span
+                                            class="text-muted">(Required)</span></label>
+                                    <input type="number" class="form-control" name="hpin" value="" min=100000 max=999999
+                                        required />
+                                </div>
+
+                                <div class="col-12">
+                                    <h4 class="mb-3">School Details</h4>
+                                    <label for="schlname" class="form-label">School Name<span
+                                            class="text-muted">(Required)</span></label>
+                                    <input type="text" class="form-control" name="schlname" value="" required />
+                                </div>
+                                <div class="col-md-7">
+                                    <label for="medium" class="form-label">Board Of Education<span
+                                            class="text-muted">(Required)</span></label>
+                                    <select class="form-select" name="medium" required>
+                                        <option value="CBSE">CBSE</option>
+                                        <option value="ICSE">ICSE</option>
+                                        <option value="STATE BOARD">STATE BOARD</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="schladdr" class="form-label">School Address<span
+                                            class="text-muted">(Required)</span></label>
+                                    <input type="text" class="form-control" name="schladdr" value="" required />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="schlcity" class="form-label">City<span
+                                            class="text-muted">(Required)</span></label>
+                                    <input type="text" class="form-control" name="schlcity" value="" required />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="schldist" class="form-label">District<span
+                                            class="text-muted">(Required)</span></label>
+                                    <input type="text" class="form-control" name="schldist" value="" required />
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <label for="schlstate" class="form-label">State<span
+                                            class="text-muted">(Required)</span></label>
+                                    <select class="form-select" name="schlstate" required>
+                                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                        <option value="Assam">Assam</option>
+                                        <option value="Bihar">Bihar</option>
+                                        <option value="Chhattisgarh">Chhattisgarh</option>
+                                        <option value="Goa">Goa</option>
+                                        <option value="Gujarat">Gujarat</option>
+                                        <option value="Haryana">Haryana</option>
+                                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                        <option value="Jharkhand">Jharkhand</option>
+                                        <option value="Karnataka">Karnataka</option>
+                                        <option value="Kerala">Kerala</option>
+                                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                        <option value="Maharashtra">Maharashtra</option>
+                                        <option value="Manipur">Manipur</option>
+                                        <option value="Meghalaya">Meghalaya</option>
+                                        <option value="Mizoram">Mizoram</option>
+                                        <option value="Nagaland">Nagaland</option>
+                                        <option value="Odisha">Odisha</option>
+                                        <option value="Punjab">Punjab</option>
+                                        <option value="Rajasthan">Rajasthan</option>
+                                        <option value="Sikkim">Sikkim</option>
+                                        <option value="Tamil Nadu">Tamil Nadu</option>
+                                        <option value="Telangana">Telangana</option>
+                                        <option value="Tripura">Tripura</option>
+                                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                        <option value="Uttarakhand">Uttarakhand</option>
+                                        <option value="West Bengal">West Bengal</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="schlpin" class="form-label">Pincode<span
+                                            class="text-muted">(Required)</span></label>
+                                    <input type="number" class="form-control" name="schlpin" value="" min=100000
+                                        max=999999 required />
+                                </div>
+                                <div class="col-12">
+                                    <button class="w-100 btn btn-primary btn-lg" padding:"1rem" type="submit">
+                                        Register
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="my-5 text-muted text-center text-small">
+            <p class="mb-1">&copy; 2022-2023 St Jude XII</p>
+        </footer>
+    </div>
+
+    <script src="/static/assets/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

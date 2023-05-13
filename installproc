@@ -1,0 +1,9 @@
+installation
+1. pip install --upgrade pip 
+
+2. pip install --upgrade Pillow
+
+3. pip install -r requirements.txt
+
+
+runtime = 3.6.9
